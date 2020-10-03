@@ -9,8 +9,8 @@ import java.util.Map;
 
 public class PromotionEngineController {
 	private final  InvoiceCalculator calculator;
-	private static int totalInvoice = 0;
-	private static Map<String, SKU> inputList = new HashMap<>();
+	private int totalInvoice = 0;
+	private Map<String, SKU> inputList = new HashMap<>();
 	
 	PromotionEngineController(InvoiceCalculator calculator)
 	{
@@ -32,8 +32,8 @@ public class PromotionEngineController {
         	controller.parseAndValidateInput(input, skuFactory);
         	input = reader.readLine().trim().toUpperCase();
         }      
-        totalInvoice = controller.getTotalInvoice(inputList); 
-        System.out.println(totalInvoice);
+        controller.totalInvoice = controller.getTotalInvoice(controller.inputList); 
+        System.out.println(controller.totalInvoice);
 	}
 
 	private void parseAndValidateInput(String input, SkuFactoryModel skuFactory) {
