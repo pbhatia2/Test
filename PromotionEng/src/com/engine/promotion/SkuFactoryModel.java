@@ -3,9 +3,12 @@ package com.engine.promotion;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+ * Factory Class to return SKU Object 
+ */
 public class SkuFactoryModel {
  	
-	private static Map<String, Integer> offerPrice = new HashMap<>();
+	private Map<String, Integer> offerPrice = new HashMap<>();
 	private static final int skuAUnitPrice = 50;
 	private static final int skuBUnitPrice = 30;
 	private static final int skuCUnitPrice = 20;
@@ -22,5 +25,9 @@ public class SkuFactoryModel {
 	public SKU getSKUObject(final String skuId, final int quantity)
 	{
 		return new SKU(skuId, quantity, offerPrice.get(skuId));
+	}
+	
+	public Map<String, Integer> getOfferPrice() {
+		return offerPrice;
 	}
 }

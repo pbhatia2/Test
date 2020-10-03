@@ -29,20 +29,33 @@ public class PromotionEngineController {
         String input = reader.readLine().trim().toUpperCase();
         while(input != null && !input.isEmpty())
         {
-        	controller.parseInputString(input, skuFactory);
+        	controller.parseAndValidateInput(input, skuFactory);
         	input = reader.readLine().trim().toUpperCase();
         }      
         totalInvoice = controller.getTotalInvoice(inputList); 
         System.out.println(totalInvoice);
 	}
 
-	private void parseInputString(String input, SkuFactoryModel skuFactory) {
+	private void parseAndValidateInput(String input, SkuFactoryModel skuFactory) {
 
 		String[] SkuDetails = input.split(" ");
 		if (SkuDetails.length != 2) {
 			System.out.println("Invalid Input ! Please Enter a Valid Input");
 			System.exit(0);
 		}
+		
+		if(!skuFactory.getOfferPrice().containsKey(SkuDetails[0]))
+		{
+			System.out.println("Invalid SKU ID");
+			System.exit(0);
+		}
+		
+		if(!SkuDetails[1].matches("-?\\d+(\\.\\d+)?"))
+		{
+			System.out.println("Invalid SKU Quantity, Please enter valid number");
+			System.exit(0);
+		}
+		
 	 	inputList.put(SkuDetails[0], skuFactory.getSKUObject(SkuDetails[0], Integer.parseInt(SkuDetails[1])));
 	}
 
