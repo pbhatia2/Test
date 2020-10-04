@@ -50,5 +50,7 @@ class InvoiceTest {
 		int actualOutput = calculator.fetchTotal(input);
 		assertEquals(expectedOutput, actualOutput);
 	}
+	
+	
 
 }

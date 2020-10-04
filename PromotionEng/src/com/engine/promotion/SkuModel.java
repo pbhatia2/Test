@@ -6,7 +6,7 @@ import java.util.Map;
 /*
  * Factory Class to return SKU Object 
  */
-public class SkuFactoryModel {
+public class SkuModel {
  	
 	private Map<String, Integer> offerPrice = new HashMap<>();
 	private static final int skuAUnitPrice = 50;
@@ -14,7 +14,7 @@ public class SkuFactoryModel {
 	private static final int skuCUnitPrice = 20;
 	private static final int skuDUnitPrice = 15;
 	
-	public SkuFactoryModel()
+	public SkuModel()
 	{
 		offerPrice.put("A", skuAUnitPrice);
 		offerPrice.put("B", skuBUnitPrice);
